@@ -83,10 +83,6 @@ else
 fi
 COMPATIBLE=${COMPATIBLE#rockchip,}
 
-/etc/init.d/boot_init.sh
-
-sleep 3s
-
 # first boot configure
 if [ ! -e "/usr/local/first_boot_flag" ] ;
 then
