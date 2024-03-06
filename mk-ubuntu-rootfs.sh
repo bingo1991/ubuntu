@@ -91,10 +91,10 @@ sudo mkdir -p $TARGET_ROOTFS_DIR/packages/install_packages
 sudo cp -rpf packages/$ARCH/rktoolkit/*.deb $TARGET_ROOTFS_DIR/packages/install_packages
 sudo cp -rpf packages/$ARCH/rkisp/*.deb $TARGET_ROOTFS_DIR/packages/install_packages
 if [ "$SOC" == "rk356x" ]; then
-	sudo cp -rpf packages/$ARCH/libmali/libmali-bifrost-g52* $TARGET_ROOTFS_DIR/packages/install_packages
+	sudo cp -rpf packages/$ARCH/libmali/libmali-bifrost-g52-g13p0-wayland-gbm* $TARGET_ROOTFS_DIR/packages/install_packages
 	sudo cp -rpf packages/$ARCH/rkaiq/*rk3568_arm64.deb $TARGET_ROOTFS_DIR/packages/install_packages
 elif [ "$SOC" == "rk3588" ]; then
-	sudo cp -rpf packages/$ARCH/libmali/libmali-valhall-g610* $TARGET_ROOTFS_DIR/packages/install_packages
+	sudo cp -rpf packages/$ARCH/libmali/libmali-valhall-g610-g13p0-wayland-gbm* $TARGET_ROOTFS_DIR/packages/install_packages
 	sudo cp -rpf packages/$ARCH/rkaiq/*rk3588_arm64.deb $TARGET_ROOTFS_DIR/packages/install_packages
 fi
 
@@ -141,6 +141,7 @@ for u in \$(ls /home/); do
 done
 
 export LC_ALL=en_US.UTF-8
+export DEBIAN_FRONTEND=noninteractive
 
 chmod o+x /usr/lib/dbus-1.0/dbus-daemon-launch-helper
 chmod +x /etc/rc.local
@@ -152,7 +153,7 @@ apt-get update -y
 apt-get upgrade -y
 
 echo -e "\033[47;36m ------ Install local packages ------ \033[0m"
-apt install -f -y /packages/install_packages/*.deb
+apt-get install -f -y /packages/install_packages/*.deb
 
 if [ "$TARGET" != "lite" ]; then
 	echo -e "\033[47;36m ----- power management ----- \033[0m"

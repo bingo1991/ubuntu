@@ -93,6 +93,7 @@ apt-get upgrade -y
 	dialog \
 	figlet \
 	git \
+	gpg-agent \
 	htop \
 	libssl-dev \
 	locales \
@@ -161,7 +162,6 @@ if [ "$TARGET" != "lite" ]; then
 	gnome-tweaks \
 	guvcview \
 	laptop-detect \
-	libdrm-tests \
 	nautilus-extension-gnome-terminal \
 	screenfetch \
 	xwayland \
@@ -174,7 +174,6 @@ if [ "$TARGET" != "lite" ]; then
 	imagemagick-6.q16 \
 	libreoffice* \
 	snapd \
-	xserver-xorg-core \
 	yelp
 fi
 
